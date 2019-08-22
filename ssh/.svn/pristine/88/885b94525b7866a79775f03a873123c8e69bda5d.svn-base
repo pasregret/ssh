@@ -1,0 +1,21 @@
+package cn.itcast.service;
+
+import org.springframework.transaction.annotation.Transactional;
+
+import cn.itcast.dao.LinkManDao;
+import cn.itcast.entity.LinkMan;
+@Transactional
+public class LinkManService {
+	private LinkManDao linkmanDao;
+
+	public void setLinkmanDao(LinkManDao linkmanDao) {
+		this.linkmanDao = linkmanDao;
+	}
+
+	public void addLinkMan(LinkMan linkMan) {
+	linkmanDao.add(linkMan);
+		
+	}
+	
+
+}

@@ -1,0 +1,30 @@
+package cn.itcast.dao;
+
+import java.util.List;
+
+import cn.itcast.entity.Customer;
+import cn.itcast.entity.LinkMan;
+
+public interface LinkManDao {
+
+	void add(LinkMan linkMan);
+
+	List<LinkMan> ListLinkMan();
+
+	void updateLinkMan(LinkMan linkMan);
+
+	LinkMan findOne(int lkmid);
+
+	void delete(LinkMan link);
+
+	List<LinkMan> findCondition(LinkMan linkMan);
+
+//	int findCount();
+//
+//	List<LinkMan> findAllPage(int begin, int pageSize);
+
+
+
+
+
+}

@@ -1,0 +1,29 @@
+package cn.itcast.dao;
+
+import java.util.List;
+
+import cn.itcast.entity.Customer;
+
+public interface CustomerDao {
+
+	void save(Customer customer);
+
+	List<Customer> findAll();
+
+	void delete(Customer c);
+
+	Customer findOne(int cid);
+
+	void update(Customer customer);
+
+	int findCount();
+
+	List<Customer> findAllPage(int begin, int pageSize);
+
+	List<Customer> findConditain(Customer customer);
+
+
+
+
+
+}

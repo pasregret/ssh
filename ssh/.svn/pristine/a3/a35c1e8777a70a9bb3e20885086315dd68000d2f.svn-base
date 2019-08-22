@@ -1,0 +1,15 @@
+package cn.itcast.dao;
+
+import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
+
+import cn.itcast.entity.LinkMan;
+
+public class LinkManDaoImpl extends HibernateDaoSupport implements LinkManDao {
+
+	@Override
+	public void add(LinkMan linkMan) {
+		this.getHibernateTemplate().save(linkMan);
+	}
+	
+
+}

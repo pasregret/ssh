@@ -1,0 +1,41 @@
+package cn.itcast.dao;
+
+import java.util.List;
+
+import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
+
+import cn.itcast.entity.Customer;
+
+public class CustomerDaoImpl extends HibernateDaoSupport implements CustomerDao {
+
+	//完成保存
+	public void save(Customer customer) {
+		this.getHibernateTemplate().save(customer);
+		
+	}
+
+	//完成查询
+	@SuppressWarnings("all")
+	public List<Customer> findAll() {
+
+		return (List<Customer>) this.getHibernateTemplate().find("from Customer");
+	}
+//
+	@Override
+	public Customer findOne(int cid) {
+		
+		return this.getHibernateTemplate().get(Customer.class, cid);
+	}
+//
+	@Override
+	public void delete(Customer c) {
+		this.getHibernateTemplate().delete(c);
+	}
+
+	@Override
+	public void update(Customer customer) {
+		this.getHibernateTemplate().update(customer);
+		
+	}
+
+}

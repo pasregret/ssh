@@ -1,0 +1,45 @@
+package cn.itcast.service;
+
+import java.util.List;
+
+import org.springframework.transaction.annotation.Transactional;
+
+import cn.itcast.dao.CustomerDao;
+import cn.itcast.entity.Customer;
+@Transactional
+public class CustomerService {
+		
+	private CustomerDao customerDao;
+	public void setCustomerDao(CustomerDao customerDao) {
+		this.customerDao = customerDao;
+	}
+	//
+	public void save(Customer customer) {
+		customerDao.save(customer);
+		
+	}
+	//
+	public List<Customer> findAll() {
+		return customerDao.findAll();
+	}
+	//
+	
+
+	//
+	public void delete(Customer c) {
+		customerDao.delete(c);
+		
+	}
+	public Customer findOne(int cid) {
+		
+		return customerDao.findOne(cid);
+	}
+	public void update(Customer customer) {
+		customerDao.update(customer);
+		
+	}
+
+	
+
+
+}

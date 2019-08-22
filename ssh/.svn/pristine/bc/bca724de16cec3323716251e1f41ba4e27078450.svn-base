@@ -1,0 +1,100 @@
+package cn.itcast.service;
+
+import java.util.List;
+
+import org.springframework.transaction.annotation.Transactional;
+
+import cn.itcast.dao.CustomerDao;
+import cn.itcast.entity.Customer;
+import cn.itcast.entity.Dict;
+import cn.itcast.entity.PageBean;
+import cn.itcast.entity.Visit;
+@Transactional
+public class CustomerService {
+		
+	private CustomerDao customerDao;
+	public void setCustomerDao(CustomerDao customerDao) {
+		this.customerDao = customerDao;
+	}
+	//
+	public void save(Customer customer) {
+		customerDao.add(customer);
+		
+	}
+	//
+	public List<Customer> findAll() {
+		return customerDao.findAll();
+	}
+	//
+	
+
+	//
+	public void delete(Customer c) {
+		customerDao.delete(c);
+		
+	}
+	public Customer findOne(int cid) {
+		
+		return customerDao.findOne(cid);
+	}
+	public void update(Customer customer) {
+		customerDao.update(customer);
+		
+	}
+	public PageBean findPage(Integer currentPage) {
+	
+PageBean pageBean = new PageBean();
+		
+		pageBean.setCurrentPage(currentPage);
+	
+		int totalCount = customerDao.findCount();
+		pageBean.setTotalCount(totalCount);
+		
+		
+		int pageSize = 3;
+		
+	
+		int totalPage = 0;
+		if(totalCount%pageSize==0) {
+			totalPage = totalCount/pageSize;
+		} else {
+			totalPage = totalCount/pageSize+1;
+		}
+		pageBean.setTotalPage(totalPage);
+		
+		int begin = (currentPage-1)*pageSize;
+
+		List<Customer> list = customerDao.findAllPage(begin,pageSize);
+		pageBean.setList(list);
+		
+		return pageBean;
+	}
+
+	public List<Customer> findConditain(Customer customer) {
+	
+		return customerDao.findConditain( customer);
+	}
+	public List<Customer> findMoreCondition(Customer customer) {
+	
+		return 	customerDao.findMoreCondition(customer);
+	}
+	public List<Dict> findAllDictLevel() {
+		
+		return customerDao.findAllDictLevel();
+	}
+	public List<Customer> selectCustomerSource() {
+	
+		return customerDao.selectCustomerSource();
+	}
+	public List<Customer> SelectCustomerLevel() {
+		
+		return customerDao.selectCustomerLevel();
+	}
+
+
+	
+
+	
+
+
+}
